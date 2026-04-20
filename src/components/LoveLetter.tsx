@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
-const MESSAGE = `On your special day, I wanted to create something as magical and unique as you are.
+const MESSAGE = `YEYYY ulang tahunn. yang utama, semoga kamu sehat selalu. semogaa kamu bahagia dengan keputusan kamu sendiri tentunya, keputusan apapun.
+  aku pengen kamu selalu bahagiaa.
 
-May your year be filled with the same light you bring into my life every single day. You deserve all the gold in the world and more.
+  Sesuai dengan hari kartini, yeah kamu sama kuatnya, dan mau perjuangin keberadaanmu dengan kondisi yang buruk ini, dan semoga kamu teruss kuat.
 
-Happy Birthday, my love. Forever and always.`;
+  sesuai dengan hari bunga nasional, senyum dan riangmu selalu cantik kaya bunga yang dipajang di toko pinggir jalan jogja, dan akan selalu cantik.
+
+  Terima kasihh sudah hadir dan terus bertahan di dunia ini. kalo kamu ga bertahan, ga akan bertemu loh kitaa heheheh
+`;
 
 interface LoveLetterProps {
   onSeeOthers: () => void;
@@ -42,7 +46,7 @@ export default function LoveLetter({ onSeeOthers }: LoveLetterProps) {
         className="relative z-10 w-full max-w-md bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden"
       >
         {/* Subtle decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -50,10 +54,10 @@ export default function LoveLetter({ onSeeOthers }: LoveLetterProps) {
           transition={{ delay: 0.5 }}
           className="font-serif text-[#D4AF37] mb-8 tracking-[0.2em] uppercase text-xs text-center"
         >
-          A Private Message
+          Sebuah Surat
         </motion.div>
 
-        <div className="font-serif text-white/90 text-lg md:text-xl leading-relaxed whitespace-pre-line text-center min-h-[300px]">
+        <div className="font-serif text-white/90 text-lg md:text-xl leading-relaxed whitespace-pre-line text-center min-h-75">
           {displayedText}
           <motion.span
             animate={{ opacity: [0, 1] }}
@@ -68,14 +72,14 @@ export default function LoveLetter({ onSeeOthers }: LoveLetterProps) {
           transition={{ delay: 8 }}
           className="mt-12 flex flex-col items-center gap-4"
         >
-           <div className="w-12 h-[1px] bg-[#D4AF37]/30" />
-           <motion.button
-             whileTap={{ scale: 0.95 }}
-             onClick={onSeeOthers}
-             className="px-6 py-2 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] text-xs uppercase tracking-[0.2em] hover:bg-[#D4AF37]/10 transition-colors"
-           >
-             See Others
-           </motion.button>
+          <div className="w-12 h-[1px] bg-[#D4AF37]/30" />
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={onSeeOthers}
+            className="px-6 py-2 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] text-xs uppercase tracking-[0.2em] hover:bg-[#D4AF37]/10 transition-colors"
+          >
+            Coba Cekk
+          </motion.button>
         </motion.div>
 
         {/* Ambient light inside card */}

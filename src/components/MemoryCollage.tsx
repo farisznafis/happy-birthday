@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Camera, Heart, Sparkles } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { Camera, Heart, Sparkles } from "lucide-react";
 
 interface PhotoProps {
   src: string;
@@ -12,7 +12,15 @@ interface PhotoProps {
   mouseY: any;
 }
 
-const PhotoCard: React.FC<PhotoProps> = ({ src, rotation, delay, x, y, mouseX, mouseY }) => {
+const PhotoCard: React.FC<PhotoProps> = ({
+  src,
+  rotation,
+  delay,
+  x,
+  y,
+  mouseX,
+  mouseY,
+}) => {
   // Parallax effect based on mouse/touch movement
   const px = useTransform(mouseX, [0, window.innerWidth], [-20, 20]);
   const py = useTransform(mouseY, [0, window.innerHeight], [-20, 20]);
@@ -27,13 +35,13 @@ const PhotoCard: React.FC<PhotoProps> = ({ src, rotation, delay, x, y, mouseX, m
         delay,
         duration: 1.2,
         ease: [0.19, 1, 0.22, 1],
-        scale: { type: "spring", damping: 15, stiffness: 100 }
+        scale: { type: "spring", damping: 15, stiffness: 100 },
       }}
       style={{
         left: x,
         top: y,
         x: smoothPX,
-        y: smoothPY
+        y: smoothPY,
       }}
       className="absolute"
     >
@@ -43,17 +51,19 @@ const PhotoCard: React.FC<PhotoProps> = ({ src, rotation, delay, x, y, mouseX, m
         className="bg-white p-3 pb-10 shadow-2xl rounded-sm border border-black/5 flex flex-col gap-2 group cursor-pointer"
       >
         <div className="relative overflow-hidden w-40 md:w-56 aspect-[4/5] bg-neutral-100">
-           <img
-             src={src}
-             alt="Memory"
-             referrerPolicy="no-referrer"
-             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <img
+            src={src}
+            alt="Memory"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
         <div className="flex justify-between items-center px-1">
           <Heart size={14} className="text-red-400 fill-red-400 opacity-60" />
-          <span className="font-serif text-[10px] text-gray-400 italic">2024</span>
+          <span className="font-serif text-[10px] text-gray-400 italic">
+            2024
+          </span>
         </div>
       </motion.div>
     </motion.div>
@@ -74,11 +84,41 @@ export default function MemoryCollage({ onBack }: MemoryCollageProps) {
   };
 
   const images = [
-    { src: 'https://picsum.photos/seed/love1/400/500', rot: -5, x: '10%', y: '15%', delay: 0.2 },
-    { src: 'https://picsum.photos/seed/love2/400/500', rot: 8, x: '55%', y: '10%', delay: 0.5 },
-    { src: 'https://picsum.photos/seed/love3/400/500', rot: -3, x: '25%', y: '45%', delay: 0.8 },
-    { src: 'https://picsum.photos/seed/love4/400/500', rot: 6, x: '60%', y: '50%', delay: 1.1 },
-    { src: 'https://picsum.photos/seed/love5/400/500', rot: -10, x: '5%', y: '65%', delay: 1.4 },
+    {
+      src: "/public/WhatsApp Image 2026-04-20 at 10.07.44 (1).jpeg",
+      rot: -5,
+      x: "10%",
+      y: "15%",
+      delay: 0.2,
+    },
+    {
+      src: "/public/WhatsApp Image 2026-04-20 at 10.07.44.jpeg",
+      rot: 8,
+      x: "55%",
+      y: "10%",
+      delay: 0.5,
+    },
+    {
+      src: "public/WhatsApp Image 2026-04-20 at 09.55.45.jpeg",
+      rot: -3,
+      x: "25%",
+      y: "45%",
+      delay: 0.8,
+    },
+    {
+      src: "public/WhatsApp Image 2026-04-20 at 09.55.45 (1).jpeg",
+      rot: 6,
+      x: "60%",
+      y: "50%",
+      delay: 1.1,
+    },
+    {
+      src: "public/WhatsApp Image 2026-04-20 at 09.55.46.jpeg",
+      rot: -10,
+      x: "5%",
+      y: "65%",
+      delay: 1.4,
+    },
   ];
 
   return (
@@ -89,7 +129,10 @@ export default function MemoryCollage({ onBack }: MemoryCollageProps) {
       {/* Background with warm glow */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#1a0f0a] via-[#3d2b1f] to-[#1a0f0a]" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8b4513]/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8b4513]/15 rounded-full blur-[120px] animate-pulse"
+        style={{ animationDelay: "1s" }}
+      />
 
       {/* Floating Particles/Sparkles */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -99,17 +142,17 @@ export default function MemoryCollage({ onBack }: MemoryCollageProps) {
             initial={{
               opacity: 0,
               x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight
+              y: Math.random() * window.innerHeight,
             }}
             animate={{
               opacity: [0, 1, 0],
-              y: [null, '-100vh'],
-              x: [null, `${(Math.random() - 0.5) * 100}px`]
+              y: [null, "-100vh"],
+              x: [null, `${(Math.random() - 0.5) * 100}px`],
             }}
             transition={{
               duration: Math.random() * 5 + 5,
               repeat: Infinity,
-              delay: Math.random() * 5
+              delay: Math.random() * 5,
             }}
             className="absolute w-1 h-1 bg-[#D4AF37] rounded-full blur-[1px]"
           />
@@ -131,7 +174,7 @@ export default function MemoryCollage({ onBack }: MemoryCollageProps) {
           transition={{ delay: 0.5, duration: 1 }}
           className="font-display text-4xl md:text-5xl text-[#D4AF37] tracking-tight"
         >
-          Our Memories
+          Kenangan Kitaa
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}

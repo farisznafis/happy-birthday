@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import confetti from 'canvas-confetti';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import confetti from "canvas-confetti";
 
 interface CelebrationProps {
   name: string;
   onComplete: () => void;
+  onPlayMusic: () => void;
 }
 
-export default function Celebration({ name, onComplete }: CelebrationProps) {
-  const [phase, setPhase] = useState<'flash' | 'reveal' | 'exit'>('flash');
+export default function Celebration({
+  name,
+  onComplete,
+  onPlayMusic,
+}: CelebrationProps) {
+  const [phase, setPhase] = useState<"flash" | "reveal" | "exit">("flash");
 
   useEffect(() => {
     // 1. Trigger Confetti
@@ -20,7 +25,7 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
       return Math.random() * (max - min) + min;
     }
 
-    const interval: any = setInterval(function() {
+    const interval: any = setInterval(function () {
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
@@ -28,8 +33,16 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
       }
 
       const particleCount = 50 * (timeLeft / duration);
-      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
     }, 250);
 
     // 2. Initial Burst
@@ -37,12 +50,14 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
       particleCount: 150,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#D4AF37', '#FFD700', '#F5F5DC', '#FFFFFF']
+      colors: ["#D4AF37", "#FFD700", "#F5F5DC", "#FFFFFF"],
     });
 
     // 3. Phase Timeline
-    const timer1 = setTimeout(() => setPhase('reveal'), 1000);
-    const timer2 = setTimeout(() => setPhase('exit'), 6000);
+    const timer1 = setTimeout(() => {
+      (setPhase("reveal"), onPlayMusic());
+    }, 1000);
+    const timer2 = setTimeout(() => setPhase("exit"), 6000);
     const timer3 = setTimeout(() => onComplete(), 7000);
 
     return () => {
@@ -51,26 +66,26 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
-  }, [onComplete]);
+  }, [onComplete, onPlayMusic]);
 
   return (
     <div className="relative w-full h-full bg-black flex items-center justify-center overflow-hidden">
       {/* Light Burst Layer */}
       <AnimatePresence>
-        {phase === 'flash' && (
+        {phase === "flash" && (
           <motion.div
             initial={{ opacity: 1, scale: 0.5 }}
             animate={{ opacity: 0, scale: 4 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="absolute inset-0 bg-white z-[60] rounded-full blur-[100px]"
+            className="absolute inset-0 bg-white z-60 rounded-full blur-[100px]"
           />
         )}
       </AnimatePresence>
 
       {/* Main Content */}
       <AnimatePresence>
-        {phase === 'reveal' && (
+        {phase === "reveal" && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -80,19 +95,20 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
           >
             {/* The Cake */}
             <motion.div
-               initial={{ y: 20 }}
-               animate={{ y: [0, -10, 0] }}
-               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-               className="text-9xl mb-12 drop-shadow-[0_0_30px_rgba(212,175,55,0.8)]"
+              initial={{ y: 20 }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="text-9xl mb-12 drop-shadow-[0_0_30px_rgba(212,175,55,0.8)]"
             >
               🎂
             </motion.div>
 
             <motion.h1
               className="text-5xl md:text-7xl font-display font-bold tracking-tight text-[#D4AF37] leading-tight"
-              style={{ textShadow: '0 0 20px rgba(212,175,55,0.4)' }}
+              style={{ textShadow: "0 0 20px rgba(212,175,55,0.4)" }}
             >
-              Happy Birthday<br />
+              Happy Birthdayy
+              <br />
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -109,21 +125,21 @@ export default function Celebration({ name, onComplete }: CelebrationProps) {
               transition={{ delay: 1.5 }}
               className="mt-8 flex gap-2"
             >
-               {[...Array(3)].map((_, i) => (
-                 <motion.div
-                   key={i}
-                   animate={{
-                     opacity: [0, 1, 0],
-                     scale: [0.8, 1.2, 0.8]
-                   }}
-                   transition={{
-                     repeat: Infinity,
-                     duration: 2,
-                     delay: i * 0.4
-                   }}
-                   className="w-2 h-2 bg-[#D4AF37] rounded-full"
-                 />
-               ))}
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    scale: [0.8, 1.2, 0.8],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    delay: i * 0.4,
+                  }}
+                  className="w-2 h-2 bg-[#D4AF37] rounded-full"
+                />
+              ))}
             </motion.div>
           </motion.div>
         )}

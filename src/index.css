@@ -1,147 +1,37 @@
-/* happy-birthday/src/index.css
-   Tailwind v4-compatible entry CSS:
-   - Use Tailwind Preflight via @import
-   - Use @tailwind utilities (components directive removed in v4)
-   - Load Google fonts first
-*/
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* Load fonts first (must precede Tailwind imports) */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap");
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Playfair Display", serif;
+}
 
-/* Tailwind v4: use preflight import instead of @tailwind base */
-@import "tailwindcss/preflight";
-
-/* Tailwind utilities (components is no longer available in v4) */
-@tailwind utilities;
-
-/* ------------------------------------------------------------
-   Global CSS variables and resets
-   ------------------------------------------------------------ */
 :root {
-    /* Font stacks */
-    --font-sans:
-        "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial;
-    --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    --font-display: "Playfair Display", "Cormorant Garamond", serif;
-
-    /* Color tokens */
-    --bg-default: #000000;
-    --text-default: #ffffff;
-
-    /* Spacing / layout tokens (optional) */
-    --max-content-width: 1200px;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Basic layout & box model */
-html,
-body,
-#root {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-/* Smooth font rendering */
-html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Base body styles */
 body {
-    min-height: 100vh;
-    background-color: var(--bg-default);
-    color: var(--text-default);
-    font-family: var(--font-sans);
-    overflow: hidden;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-drag: none;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* App root container */
 #root {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    isolation: isolate;
+  width: 100%;
+  height: 100%;
 }
 
-/* Utility-ish global classes used by the app */
-.font-display {
-    font-family: var(--font-display);
-}
-
-.font-serif-custom {
-    font-family: var(--font-serif);
-}
-
-/* Accessibility helpers */
-.sr-only {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-    border: 0;
-    padding: 0;
-    margin: -1px;
-}
-
-/* Focus visible fallback */
-:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.12);
-    outline-offset: 2px;
-}
-
-/* Image defaults to avoid reflow */
-img {
-    -webkit-user-drag: none;
-    user-select: none;
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/* Small animations */
 @keyframes flicker {
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(0.95);
-    }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.95); }
 }
 
 .animate-flicker {
-    animation: flicker 0.1s infinite alternate;
+  animation: flicker 0.1s infinite alternate;
 }
-
-/* Minor helpers used by the project */
-.hidden-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.hidden-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-/* Ensure utility classes from Tailwind are available */
-/* (Tailwind utilities are imported above) */
-
-/* End of file */
