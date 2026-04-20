@@ -45,7 +45,7 @@ export default function LoveLetter({ onSeeOthers }: LoveLetterProps) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
-        className="relative z-10 w-full max-w-md bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden"
+        className="relative z-10 w-full max-w-md bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl overflow-y-auto max-h-[80vh]"
       >
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#D4AF37]/50 to-transparent" />

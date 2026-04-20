@@ -104,7 +104,7 @@ export default function Celebration({
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-7xl font-display font-bold tracking-tight text-[#D4AF37] leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl ✅font-display font-bold tracking-tight text-[#D4AF37] leading-tight"
               style={{ textShadow: "0 0 20px rgba(212,175,55,0.4)" }}
             >
               Happy Birthdayy
@@ -113,7 +113,7 @@ export default function Celebration({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-white font-serif italic text-6xl md:text-8xl"
+                className="text-white font-serif italic text-4xl sm:text-5xl md:text-7xl"
               >
                 {name}
               </motion.span>
