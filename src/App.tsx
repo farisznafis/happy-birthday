@@ -233,7 +233,7 @@ export default function App() {
       <audio
         ref={audioRef}
         loop
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="public/Nadhif Basalamah - bergema sampai selamanya (Official Lyric Video).mp3"
       />
 
       <main className="relative z-10 min-h-screen flex flex-col justify-center">
@@ -254,11 +254,9 @@ export default function App() {
                 >
                   <PartyPopper className="w-16 h-16 text-pink-500 mx-auto mb-4" />
                   <h1 className="text-4xl md:text-5xl font-black text-pink-600 tracking-tight mb-2">
-                    Special Delivery!
+                    TING TING HALO SAYANG!
                   </h1>
-                  <p className="text-pink-400 font-medium">
-                    Ada sesuatu yang spesial buat kamu...
-                  </p>
+                  <p className="text-pink-400 font-medium">coba bukaa</p>
                 </motion.div>
                 <div className="absolute inset-0 bg-pink-100 rounded-[2.5rem] rotate-3 -z-10" />
               </div>
