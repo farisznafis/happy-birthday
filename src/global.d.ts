@@ -20,9 +20,5 @@ declare module "lucide-react" {
   export const Camera: React.FC<IconProps>;
   export const MessageCircle: React.FC<IconProps>;
   export const ArrowRight: React.FC<IconProps>;
-}
-
-declare module "motion/react" {
-  export * from "motion";
-  export { default } from "motion";
+  export const Flame: React.FC<IconProps>;
 }

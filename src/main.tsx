@@ -1,19 +1,20 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
 
-// Diagnostic logging
-console.log("[main.tsx] App initialization started");
+// Diagnostics logging
+console.log('[main.tsx] ✨ App initialization started');
 
 function mountApp() {
-  const rootElement = document.getElementById("root");
+  const rootElement = document.getElementById('root');
 
+  // Validate root element exists
   if (!rootElement) {
-    const errorMsg = "Root element (#root) not found in DOM";
-    console.error(`[main.tsx] FATAL: ${errorMsg}`);
+    const errorMsg = 'Root element (#root) not found in DOM';
+    console.error(`[main.tsx] ❌ FATAL: ${errorMsg}`);
 
-    // Display error on page instead of showing blank screen
+    // Display error on page instead of blank screen
     document.body.innerHTML = `
       <div style="
         display: flex;
@@ -38,7 +39,7 @@ function mountApp() {
             ${errorMsg}
           </p>
           <p style="margin: 0; font-size: 14px; opacity: 0.8;">
-            Check the browser console for more details.
+            Check the browser console (F12) for more details.
           </p>
         </div>
       </div>
@@ -47,20 +48,23 @@ function mountApp() {
   }
 
   try {
-    console.log("[main.tsx] Creating React root");
+    console.log('[main.tsx] 🚀 Creating React root');
     const root = createRoot(rootElement);
 
-    console.log("[main.tsx] Rendering App component");
+    console.log('[main.tsx] 🎨 Rendering App component');
     root.render(
       <StrictMode>
         <App />
       </StrictMode>,
     );
 
-    console.log("[main.tsx] ✅ App successfully rendered");
+    console.log('[main.tsx] ✅ App successfully mounted and rendered');
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
-    console.error("[main.tsx] Render error:", error);
+    const errorStack = error instanceof Error ? error.stack : '';
+
+    console.error('[main.tsx] ❌ Render error:', error);
+    console.error('[main.tsx] Stack trace:', errorStack);
 
     // Show error overlay on page
     document.body.innerHTML = `
@@ -82,18 +86,20 @@ function mountApp() {
           border-radius: 16px;
           border-left: 4px solid #ff6b6b;
         ">
-          <h1 style="margin: 0 0 20px 0; font-size: 28px;">❌ Render Error</h1>
+          <h1 style="margin: 0 0 20px 0; font-size: 28px;">❌ Application Render Error</h1>
           <pre style="
-            margin: 0;
+            margin: 0 0 20px 0;
             padding: 15px;
             background: rgba(0,0,0,0.5);
             border-radius: 8px;
             overflow-x: auto;
-            font-size: 13px;
+            font-size: 12px;
             line-height: 1.4;
-          ">${errorMsg}</pre>
-          <p style="margin: 20px 0 0 0; font-size: 14px; opacity: 0.9;">
-            💡 Open DevTools (F12) → Console to see full error trace
+            max-height: 300px;
+            overflow-y: auto;
+          "><code>${errorMsg}\n\n${errorStack}</code></pre>
+          <p style="margin: 0; font-size: 14px; opacity: 0.9;">
+            💡 Open DevTools (F12) → Console for full error details
           </p>
         </div>
       </div>
@@ -101,16 +107,23 @@ function mountApp() {
   }
 }
 
-// Global error handlers
-window.addEventListener("error", (event) => {
-  console.error("[main.tsx] Uncaught error:", event.error);
+// Global error handlers to catch unhandled errors
+window.addEventListener('error', (event) => {
+  console.error('[main.tsx] 🚨 Uncaught error event:', event.error);
 });
 
-window.addEventListener("unhandledrejection", (event) => {
-  console.error("[main.tsx] Unhandled promise rejection:", event.reason);
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('[main.tsx] 🚨 Unhandled promise rejection:', event.reason);
 });
 
-// Start app
-mountApp();
+// Log when page loads
+console.log('[main.tsx] 📄 Document ready state:', document.readyState);
 
-console.log("[main.tsx] Initialization complete");
+// Mount the app
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', mountApp);
+} else {
+  mountApp();
+}
+
+console.log('[main.tsx] 🎯 Initialization sequence complete');
