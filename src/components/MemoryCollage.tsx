@@ -85,35 +85,35 @@ export default function MemoryCollage({ onBack }: MemoryCollageProps) {
 
   const images = [
     {
-      src: "/public/WhatsApp Image 2026-04-20 at 10.07.44 (1).jpeg",
+      src: "/happy-birthday/WhatsApp Image 2026-04-20 at 10.07.44 (1).jpeg",
       rot: -5,
       x: "10%",
       y: "15%",
       delay: 0.2,
     },
     {
-      src: "/public/WhatsApp Image 2026-04-20 at 10.07.44.jpeg",
+      src: "/happy-birthday/WhatsApp Image 2026-04-20 at 10.07.44.jpeg",
       rot: 8,
       x: "55%",
       y: "10%",
       delay: 0.5,
     },
     {
-      src: "public/WhatsApp Image 2026-04-20 at 09.55.45.jpeg",
+      src: "/happy-birthday/WhatsApp Image 2026-04-20 at 09.55.45.jpeg",
       rot: -3,
       x: "25%",
       y: "45%",
       delay: 0.8,
     },
     {
-      src: "public/WhatsApp Image 2026-04-20 at 09.55.45 (1).jpeg",
+      src: "/happy-birthday/WhatsApp Image 2026-04-20 at 09.55.45 (1).jpeg",
       rot: 6,
       x: "60%",
       y: "50%",
       delay: 1.1,
     },
     {
-      src: "public/WhatsApp Image 2026-04-20 at 09.55.46.jpeg",
+      src: "/happy-birthday/WhatsApp Image 2026-04-20 at 09.55.46.jpeg",
       rot: -10,
       x: "5%",
       y: "65%",
