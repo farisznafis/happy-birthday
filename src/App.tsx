@@ -18,7 +18,9 @@ export default function App() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("../public/bergema-sampai-selamanya.mp3");
+    audioRef.current = new Audio(
+      "/happy-birthday/bergema-sampai-selamanya.mp3",
+    );
     audioRef.current.volume = 0.5;
     audioRef.current.loop = true;
 
@@ -72,7 +74,10 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="w-full h-full flex items-center justify-center bg-black cursor-pointer"
-            onClick={() => setScene("search")}
+            onClick={() => {
+              playMusic();
+              setScene("search");
+            }}
           >
             <div className="flex flex-col items-center gap-4">
               <motion.div

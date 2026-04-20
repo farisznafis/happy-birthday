@@ -9,6 +9,8 @@ const MESSAGE = `YEYYY ulang tahunn. yang utama, semoga kamu sehat selalu. semog
   sesuai dengan hari bunga nasional, senyum dan riangmu selalu cantik kaya bunga yang dipajang di toko pinggir jalan jogja, dan akan selalu cantik.
 
   Terima kasihh sudah hadir dan terus bertahan di dunia ini. kalo kamu ga bertahan, ga akan bertemu loh kitaa heheheh
+
+  I wuff you so mush ❤️😍
 `;
 
 interface LoveLetterProps {
